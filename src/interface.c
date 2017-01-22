@@ -233,6 +233,7 @@ static const char HT_00131[] = "MSSQL(2000)";
 static const char HT_00132[] = "MSSQL(2005)";
 static const char HT_00133[] = "PeopleSoft";
 static const char HT_00141[] = "EPiServer 6.x < v4";
+static const char HT_00199[] = "SHA1 min/max";
 static const char HT_01421[] = "hMailServer";
 static const char HT_01441[] = "EPiServer 6.x > v4";
 static const char HT_01711[] = "SSHA-512(Base64), LDAP {SSHA512}";
@@ -13188,6 +13189,7 @@ char *strhashtype (const u32 hash_mode)
     case   141: return ((char *) HT_00141);
     case   150: return ((char *) HT_00150);
     case   160: return ((char *) HT_00160);
+    case   199: return ((char *) HT_00199);
     case   200: return ((char *) HT_00200);
     case   300: return ((char *) HT_00300);
     case   400: return ((char *) HT_00400);
@@ -17175,6 +17177,29 @@ int hashconfig_init (hashcat_ctx_t *hashcat_ctx)
                  hashconfig->parse_func     = hmacsha1_parse_hash;
                  hashconfig->opti_type      = OPTI_TYPE_ZERO_BYTE
                                             | OPTI_TYPE_NOT_ITERATED;
+                 hashconfig->dgst_pos0      = 3;
+                 hashconfig->dgst_pos1      = 4;
+                 hashconfig->dgst_pos2      = 2;
+                 hashconfig->dgst_pos3      = 1;
+                 break;
+
+    case   199:  hashconfig->hash_type      = HASH_TYPE_SHA1;
+                 hashconfig->salt_type      = SALT_TYPE_NONE;
+                 hashconfig->attack_exec    = ATTACK_EXEC_INSIDE_KERNEL;
+                 hashconfig->opts_type      = OPTS_TYPE_PT_GENERATE_BE
+                                            | OPTS_TYPE_PT_ADD80
+                                            | OPTS_TYPE_PT_ADDBITS15
+                                            | OPTS_TYPE_PT_NEVERCRACK;
+                 hashconfig->kern_type      = KERN_TYPE_SHA1_MIN_MAX;
+                 hashconfig->dgst_size      = DGST_SIZE_4_5;
+                 hashconfig->parse_func     = sha1_parse_hash;
+                 hashconfig->opti_type      = OPTI_TYPE_ZERO_BYTE
+                                            | OPTI_TYPE_PRECOMPUTE_INIT
+                                            | OPTI_TYPE_PRECOMPUTE_MERKLE
+                                            | OPTI_TYPE_EARLY_SKIP
+                                            | OPTI_TYPE_NOT_ITERATED
+                                            | OPTI_TYPE_NOT_SALTED
+                                            | OPTI_TYPE_RAW_HASH;
                  hashconfig->dgst_pos0      = 3;
                  hashconfig->dgst_pos1      = 4;
                  hashconfig->dgst_pos2      = 2;

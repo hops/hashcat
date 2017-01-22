@@ -1136,6 +1136,7 @@ typedef enum kern_type
   KERN_TYPE_SHA1_SLTPWU         = 140,
   KERN_TYPE_HMACSHA1_PW         = 150,
   KERN_TYPE_HMACSHA1_SLT        = 160,
+  KERN_TYPE_SHA1_MIN_MAX        = 199,
   KERN_TYPE_MYSQL               = 200,
   KERN_TYPE_MYSQL41             = 300,
   KERN_TYPE_PHPASS              = 400,
