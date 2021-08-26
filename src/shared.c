@@ -59,6 +59,8 @@ static const char *const PA_040 = "Invalid or unsupported cipher";
 static const char *const PA_041 = "Invalid filesize";
 static const char *const PA_042 = "IV length exception";
 static const char *const PA_043 = "CT length exception";
+static const char *const PA_046 = "Invalid WD header filesize";
+static const char *const PA_047 = "Invalid WD header identifier";
 static const char *const PA_255 = "Unknown error";
 
 static const char *const OPTI_STR_OPTIMIZED_KERNEL     = "Optimized-Kernel";
@@ -1062,6 +1064,8 @@ const char *strparser (const u32 parser_status)
     case PARSER_FILE_SIZE:            return PA_041;
     case PARSER_IV_LENGTH:            return PA_042;
     case PARSER_CT_LENGTH:            return PA_043;
+    case PARSER_WD_FILE_SIZE:         return PA_046;
+    case PARSER_WD_MAGIC:             return PA_047;
   }
 
   return PA_255;
