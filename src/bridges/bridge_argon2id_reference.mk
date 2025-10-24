@@ -12,6 +12,7 @@ ARGON2_REFERENCE_CFLAGS += -mavx2
 endif
 else
 ARGON2_REFERENCE_CFLAGS += -march=native
+ARGON2_REFERENCE_CFLAGS += -mtune=native
 endif
 endif
 endif

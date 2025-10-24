@@ -12,6 +12,7 @@ SCRYPT_YESCRYPT_CFLAGS += -mavx2
 endif
 else
 SCRYPT_YESCRYPT_CFLAGS += -march=native
+SCRYPT_YESCRYPT_CFLAGS += -mtune=native
 endif
 endif
 endif
