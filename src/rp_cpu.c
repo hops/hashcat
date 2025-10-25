@@ -45,6 +45,22 @@ static void MANGLE_SWITCH (char *arr, const int l, const int r)
   arr[l] = c;
 }
 
+static u8 cshift_lookup[256] =
+{
+  // 0-32:
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  // 33-126:
+  16, 5, 16, 16, 16, 17, 5, 17, 25, 18, 22, 16, 114, 16, 16, 25, 16, 114, 16, 16, 16, 104, 17, 18, 17, 1, 1, 16, 22, 16, 16, 114, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 104, 114, 30, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 30,
+  // 127-255:
+  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+};
+
+static void MANGLE_SHIFT_CASE (char *arr, const int pos)
+{
+  u8 lpos = (u8) arr[pos];
+  arr[pos] ^= cshift_lookup[lpos];
+}
+
 static int mangle_toggle_at_sep (char arr[RP_PASSWORD_SIZE], int arr_len, char c, int upos)
 {
   int toggle_next = 0;
@@ -94,6 +110,13 @@ static int mangle_urest (char arr[RP_PASSWORD_SIZE], int arr_len)
 static int mangle_trest (char arr[RP_PASSWORD_SIZE], int arr_len)
 {
   for (int pos = 0; pos < arr_len; pos++) MANGLE_TOGGLE_AT (arr, pos);
+
+  return arr_len;
+}
+
+static int mangle_shift_case (char arr[RP_PASSWORD_SIZE], int arr_len)
+{
+  for (int pos = 0; pos < arr_len; pos++) MANGLE_SHIFT_CASE (arr, pos);
 
   return arr_len;
 }
@@ -1200,6 +1223,10 @@ int _old_apply_rule (const char *rule, int rule_len, char in[RP_PASSWORD_SIZE], 
 
       case RULE_OP_MANGLE_TREST:
         out_len = mangle_trest (out, out_len);
+        break;
+
+      case RULE_OP_MANGLE_SHIFT_CASE:
+        out_len = mangle_shift_case (out, out_len);
         break;
 
       case RULE_OP_MANGLE_TOGGLE_AT:

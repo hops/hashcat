@@ -18,6 +18,7 @@
 #define RULE_OP_MANGLE_LREST_UFIRST      'c'
 #define RULE_OP_MANGLE_UREST_LFIRST      'C'
 #define RULE_OP_MANGLE_TREST             't'
+#define RULE_OP_MANGLE_SHIFT_CASE        'S'
 #define RULE_OP_MANGLE_TOGGLE_AT         'T'
 #define RULE_OP_MANGLE_TOGGLE_AT_SEP     '3'
 #define RULE_OP_MANGLE_REVERSE           'r'

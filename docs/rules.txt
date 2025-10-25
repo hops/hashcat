@@ -4,6 +4,7 @@
 #define RULE_OP_MANGLE_LREST_UFIRST      'c'  // lower case all chars, upper case 1st
 #define RULE_OP_MANGLE_UREST_LFIRST      'C'  // upper case all chars, lower case 1st
 #define RULE_OP_MANGLE_TREST             't'  // switch the case of each char
+#define RULE_OP_MANGLE_SHIFT_CASE        'S'  // shift the case of each char, JtR-like
 #define RULE_OP_MANGLE_TOGGLE_AT         'T'  // switch the case of each char on pos N
 #define RULE_OP_MANGLE_TOGGLE_AT_SEP     '3'  // switch the case of the first letter after occurrence N of char X
 #define RULE_OP_MANGLE_REVERSE           'r'  // reverse word

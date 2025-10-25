@@ -1003,6 +1003,22 @@ DECLSPEC HC_INLINE_RP u32 rule_op_mangle_trest (MAYBE_UNUSED const u32 p0, MAYBE
   return in_len;
 }
 
+DECLSPEC HC_INLINE_RP u32 rule_op_mangle_shift_case (MAYBE_UNUSED const u32 p0, MAYBE_UNUSED const u32 p1, MAYBE_UNUSED PRIVATE_AS u32 *buf0, MAYBE_UNUSED PRIVATE_AS u32 *buf1, const u32 in_len)
+{
+  u32 t;
+
+  t = buf0[0]; buf0[0] = t ^ generate_cshift_mask (t);
+  t = buf0[1]; buf0[1] = t ^ generate_cshift_mask (t);
+  t = buf0[2]; buf0[2] = t ^ generate_cshift_mask (t);
+  t = buf0[3]; buf0[3] = t ^ generate_cshift_mask (t);
+  t = buf1[0]; buf1[0] = t ^ generate_cshift_mask (t);
+  t = buf1[1]; buf1[1] = t ^ generate_cshift_mask (t);
+  t = buf1[2]; buf1[2] = t ^ generate_cshift_mask (t);
+  t = buf1[3]; buf1[3] = t ^ generate_cshift_mask (t);
+
+  return in_len;
+}
+
 DECLSPEC HC_INLINE_RP u32 rule_op_mangle_toggle_at (MAYBE_UNUSED const u32 p0, MAYBE_UNUSED const u32 p1, MAYBE_UNUSED PRIVATE_AS u32 *buf0, MAYBE_UNUSED PRIVATE_AS u32 *buf1, const u32 in_len)
 {
   if (p0 >= in_len) return in_len;
@@ -3162,6 +3178,7 @@ DECLSPEC u32 apply_rule_optimized (const u32 name, const u32 p0, const u32 p1, P
     case RULE_OP_MANGLE_LREST_UFIRST:     out_len = rule_op_mangle_lrest_ufirst     (p0, p1, buf0, buf1, out_len); break;
     case RULE_OP_MANGLE_UREST_LFIRST:     out_len = rule_op_mangle_urest_lfirst     (p0, p1, buf0, buf1, out_len); break;
     case RULE_OP_MANGLE_TREST:            out_len = rule_op_mangle_trest            (p0, p1, buf0, buf1, out_len); break;
+    case RULE_OP_MANGLE_SHIFT_CASE:       out_len = rule_op_mangle_shift_case       (p0, p1, buf0, buf1, out_len); break;
     case RULE_OP_MANGLE_TOGGLE_AT:        out_len = rule_op_mangle_toggle_at        (p0, p1, buf0, buf1, out_len); break;
     case RULE_OP_MANGLE_TOGGLE_AT_SEP:    out_len = rule_op_mangle_toggle_at_sep    (p0, p1, buf0, buf1, out_len); break;
     case RULE_OP_MANGLE_REVERSE:          out_len = rule_op_mangle_reverse          (p0, p1, buf0, buf1, out_len); break;
