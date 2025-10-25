@@ -144,8 +144,7 @@ jobs:
           usesh: true
           envs: SHARED
           prepare: |
-            pkg_add git gcc-11.2.0p15 gmake gsed llvm-19.1.7p3
-            clang --version
+            pkg_add git gcc%11 gmake gsed llvm%19
           run: |
             export TERM=xterm
             gmake ENABLE_LTO=0 CC=clang CXX=clang++
