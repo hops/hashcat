@@ -20,6 +20,7 @@ static const char grp_op_nop[] =
   RULE_OP_MANGLE_LREST_UFIRST,
   RULE_OP_MANGLE_UREST_LFIRST,
   RULE_OP_MANGLE_TREST,
+  RULE_OP_MANGLE_SHIFT_CASE,
   RULE_OP_MANGLE_REVERSE,
   RULE_OP_MANGLE_DUPEWORD,
   RULE_OP_MANGLE_REFLECT,
@@ -298,6 +299,10 @@ int cpu_rule_to_kernel_rule (char *rule_buf, u32 rule_len, kernel_rule_t *rule)
         break;
 
       case RULE_OP_MANGLE_TREST:
+        SET_NAME (rule, rule_buf[rule_pos]);
+        break;
+
+      case RULE_OP_MANGLE_SHIFT_CASE:
         SET_NAME (rule, rule_buf[rule_pos]);
         break;
 
@@ -606,6 +611,10 @@ int kernel_rule_to_cpu_rule (char *rule_buf, kernel_rule_t *rule)
         break;
 
       case RULE_OP_MANGLE_TREST:
+        rule_buf[rule_pos] = rule_cmd;
+        break;
+
+      case RULE_OP_MANGLE_SHIFT_CASE:
         rule_buf[rule_pos] = rule_cmd;
         break;
 

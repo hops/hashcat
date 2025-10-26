@@ -324,6 +324,7 @@ typedef enum rule_functions
   RULE_OP_MANGLE_LREST_UFIRST      = 'c',
   RULE_OP_MANGLE_UREST_LFIRST      = 'C',
   RULE_OP_MANGLE_TREST             = 't',
+  RULE_OP_MANGLE_SHIFT_CASE        = 'S',
   RULE_OP_MANGLE_TOGGLE_AT         = 'T',
   RULE_OP_MANGLE_TOGGLE_AT_SEP     = '3',
   RULE_OP_MANGLE_REVERSE           = 'r',
