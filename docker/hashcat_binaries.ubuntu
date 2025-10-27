@@ -7,7 +7,7 @@ LABEL org.opencontainers.image.authors="Gabriele 'matrix' Gristina <matrix@hashc
       org.opencontainers.image.title="Hashcat cross-build using hashcat-toolchain" \
       org.opencontainers.image.version="2.0" \
       org.opencontainers.image.description="Docker image based on Ubuntu for cross-compiling Hashcat (Windows and Linux) and optionally scanning for potential vulnerabilities using clang-tidy and scan-build." \
-      org.opencontainers.image.source="https://github.com/hashcat/hashcat/blob/master/docker/hashcatBinaries.ubuntu" \
+      org.opencontainers.image.source="https://github.com/hashcat/hashcat/blob/master/docker/hashcat_binaries.ubuntu" \
       org.opencontainers.image.licenses="MIT"
 
 ARG UBUNTU_VERSION \
@@ -129,7 +129,7 @@ ENV CACHE_BUST=${CACHE_BUST} \
 
 RUN cd /root && git clone https://github.com/hashcat/hashcat.git
 
-COPY docker/patches/hashcatBinaries/ /root/patches/
+COPY docker/patches/hashcat_binaries/ /root/patches/
 
 RUN bash -c 'shopt -s nullglob; cd /root/hashcat; for p in /root/patches/*.patch /root/patches/*.diff; do patch -p1 < "$p"; done'
 
