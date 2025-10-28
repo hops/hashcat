@@ -25,12 +25,12 @@ sub module_generate_hash
     {
       $word .= $salt;
     }
-    $word = sha512_hex($word);
+    $word = sha512_hex ($word);
   }
-  
-  my $final_hash = sha256_hex($word);
 
-  my $hash = sprintf("%s:%s", $final_hash, $salt);
+  my $final_hash = sha256_hex ($word);
+
+  my $hash = sprintf ("%s:%s", $final_hash, $salt);
 
   return $hash;
 }
