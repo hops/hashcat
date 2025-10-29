@@ -120,6 +120,7 @@ endif
 
 IS_AARCH64              := $(shell [ "$$(arch 2>/dev/null)" = "aarch64" ] && echo 1 || echo 0)
 IS_ARM                  := $(or $(filter 1,$(IS_APPLE_SILICON)),$(filter 1,$(IS_AARCH64)))
+IS_PPC                  := $(shell uname -m | grep -q -E '^(ppc|powerpc)' && echo 1 || echo 0)
 
 ifneq (,$(filter $(UNAME),OpenBSD FreeBSD NetBSD DragonFly))
 CC                      := cc
@@ -271,8 +272,13 @@ endif
 ifeq ($(MAINTAINER_MODE),0)
 ifeq ($(BUILD_MODE),native)
 ifneq ($(UNAME),Darwin)
+ifeq ($(IS_PPC),1)
+CFLAGS                  += -mcpu=native
+CFLAGS                  += -mtune=native
+else
 CFLAGS                  += -march=native
 CFLAGS                  += -mtune=native
+endif
 else
 ifeq ($(MACOS_UNIVERSAL_BINARY),0)
 CFLAGS                  += -march=native
