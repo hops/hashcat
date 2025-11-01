@@ -8,7 +8,9 @@ Author:See docs/credits.txt
 ✅ Android Requirements
 
 · Android 8.0 or higher (OpenCL 3.0 support)
+
 · Termux app installed from F-Droid or Google Play
+
 · ARM64 device with OpenCL-capable GPU
 
 ---
@@ -135,15 +137,21 @@ Memory-Intensive Algorithms
 These algorithms exceed mobile memory limits and will crash:
 
 · WPA2 (22000) - PBKDF2 memory requirements
+
 · Bitcoin (11300) - Large kernel needs
+
 · SHA512 (1700) - 512-bit operations
 
 Recommended for Mobile
 
 · MD4/MD5 (800-1200 MH/s)
+
 · SHA1 (200-400 MH/s)
+
 · SHA256 (80-150 MH/s)
+
 · Dictionary attacks
+
 · Educational use
 
 ---
@@ -151,10 +159,15 @@ Recommended for Mobile
 📊 Tested Performance (POCO X6 Pro)
 
 Algorithm Speed Status
+
 MD4 1179 MH/s ✅
+
 MD5 824 MH/s ✅
+
 SHA1 282 MH/s ✅
+
 SHA256 111 MH/s ✅
+
 WPA2 OOM ❌
 
 Real-world: 9-character password cracked in 90 seconds at 694 MH/s
@@ -166,8 +179,11 @@ Real-world: 9-character password cracked in 90 seconds at 694 MH/s
 Your Android device is now ready for hashcat! Perfect for:
 
 · Educational password security
+
 · Portable penetration testing
+
 · On-the-go hash verification
+
 · Security research and learning
 
 ---
