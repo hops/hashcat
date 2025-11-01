@@ -819,6 +819,13 @@ uninstall:
 	$(RM) -rf $(DESTDIR)$(SHARED_FOLDER)
 	$(RM) -rf $(DESTDIR)$(DOCUMENT_FOLDER)
 
+# Android/Termux detection
+ifneq (,$(findstring Android,$(shell uname -a)))
+  NATIVE_CFLAGS += -D__ANDROID__
+  LFLAGS_NATIVE += -L$(PREFIX)/lib -liconv -lm
+  $(info Android environment detected - enabling Termux compatibility)
+endif
+
 ##
 ## native compiled hashcat library and frontend
 ##
