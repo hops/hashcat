@@ -448,15 +448,27 @@ endif
 ## Native compilation target
 ##
 
-ifeq ($(UNAME),Linux)
-CFLAGS_NATIVE           := $(CFLAGS)
-CFLAGS_NATIVE           += -DWITH_HWMON
-LFLAGS_NATIVE           := $(LFLAGS)
-LFLAGS_NATIVE           += -lpthread
-LFLAGS_NATIVE           += -ldl
-LFLAGS_NATIVE           += -lrt
-LFLAGS_NATIVE           += -lm
+# Android/Termux detection
+ifneq (,$(findstring Android,$(shell uname -a)))
+  CFLAGS_NATIVE           := $(CFLAGS)
+  CFLAGS_NATIVE           += -D__ANDROID__
+  LFLAGS_NATIVE           := $(LFLAGS)
+  LFLAGS_NATIVE           += -lpthread
+  LFLAGS_NATIVE           += -ldl
+  LFLAGS_NATIVE           += -lrt
+  LFLAGS_NATIVE           += -L$(PREFIX)/lib -liconv -lm
+  $(info Android environment detected - enabling Termux compatibility)
+
+else ifeq ($(UNAME),Linux)
+  CFLAGS_NATIVE           := $(CFLAGS)
+  CFLAGS_NATIVE           += -DWITH_HWMON
+  LFLAGS_NATIVE           := $(LFLAGS)
+  LFLAGS_NATIVE           += -lpthread
+  LFLAGS_NATIVE           += -ldl
+  LFLAGS_NATIVE           += -lrt
+  LFLAGS_NATIVE           += -lm
 endif # Linux
+
 
 ifneq (,$(filter $(UNAME),FreeBSD DragonFly))
 ifndef PORTNAME
@@ -818,13 +830,6 @@ uninstall:
 	$(RM) -rf $(DESTDIR)$(LIBRARY_DEV_FOLDER)
 	$(RM) -rf $(DESTDIR)$(SHARED_FOLDER)
 	$(RM) -rf $(DESTDIR)$(DOCUMENT_FOLDER)
-
-# Android/Termux detection
-ifneq (,$(findstring Android,$(shell uname -a)))
-  NATIVE_CFLAGS += -D__ANDROID__
-  LFLAGS_NATIVE += -L$(PREFIX)/lib -liconv -lm
-  $(info Android environment detected - enabling Termux compatibility)
-endif
 
 ##
 ## native compiled hashcat library and frontend
