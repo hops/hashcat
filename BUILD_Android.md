@@ -1,4 +1,4 @@
-#Hashcat – Android Build Documentation
+# Hashcat – Android Build Documentation
 
 Revision: 1.1
 
