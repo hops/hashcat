@@ -52,6 +52,7 @@ DECLSPEC int mangle_chr_shiftl (MAYBE_UNUSED const u8 p0, MAYBE_UNUSED const u8 
 DECLSPEC int mangle_chr_shiftr (MAYBE_UNUSED const u8 p0, MAYBE_UNUSED const u8 p1, PRIVATE_AS u8 *buf, const int len);
 DECLSPEC int mangle_chr_incr (MAYBE_UNUSED const u8 p0, MAYBE_UNUSED const u8 p1, PRIVATE_AS u8 *buf, const int len);
 DECLSPEC int mangle_chr_decr (MAYBE_UNUSED const u8 p0, MAYBE_UNUSED const u8 p1, PRIVATE_AS u8 *buf, const int len);
+DECLSPEC int mangle_chr_add (MAYBE_UNUSED const u8 p0, MAYBE_UNUSED const u8 p1, PRIVATE_AS u8 *buf, const int len);
 DECLSPEC int mangle_replace_np1 (MAYBE_UNUSED const u8 p0, MAYBE_UNUSED const u8 p1, PRIVATE_AS u8 *buf, const int len);
 DECLSPEC int mangle_replace_nm1 (MAYBE_UNUSED const u8 p0, MAYBE_UNUSED const u8 p1, PRIVATE_AS u8 *buf, const int len);
 DECLSPEC int mangle_dupeblock_first (MAYBE_UNUSED const u8 p0, MAYBE_UNUSED const u8 p1, PRIVATE_AS u8 *buf, const int len);

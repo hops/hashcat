@@ -930,6 +930,15 @@ DECLSPEC int mangle_chr_decr (MAYBE_UNUSED const u8 p0, MAYBE_UNUSED const u8 p1
   return len;
 }
 
+DECLSPEC int mangle_chr_add (MAYBE_UNUSED const u8 p0, MAYBE_UNUSED const u8 p1, PRIVATE_AS u8 *buf, const int len)
+{
+  if (p0 >= len) return len;
+
+  buf[p0]+=p1;
+
+  return len;
+}
+
 DECLSPEC int mangle_replace_np1 (MAYBE_UNUSED const u8 p0, MAYBE_UNUSED const u8 p1, PRIVATE_AS u8 *buf, const int len)
 {
   if ((p0 + 1) >= len) return len;
@@ -1231,6 +1240,7 @@ DECLSPEC int apply_rule (const u32 name, MAYBE_UNUSED const u8 p0, MAYBE_UNUSED 
     case RULE_OP_MANGLE_CHR_SHIFTR:       out_len = mangle_chr_shiftr       (p0, p1, (PRIVATE_AS u8 *) buf, out_len); break;
     case RULE_OP_MANGLE_CHR_INCR:         out_len = mangle_chr_incr         (p0, p1, (PRIVATE_AS u8 *) buf, out_len); break;
     case RULE_OP_MANGLE_CHR_DECR:         out_len = mangle_chr_decr         (p0, p1, (PRIVATE_AS u8 *) buf, out_len); break;
+    case RULE_OP_MANGLE_CHR_ADD:          out_len = mangle_chr_add          (p0, p1, (PRIVATE_AS u8 *) buf, out_len); break;
     case RULE_OP_MANGLE_REPLACE_NP1:      out_len = mangle_replace_np1      (p0, p1, (PRIVATE_AS u8 *) buf, out_len); break;
     case RULE_OP_MANGLE_REPLACE_NM1:      out_len = mangle_replace_nm1      (p0, p1, (PRIVATE_AS u8 *) buf, out_len); break;
     case RULE_OP_MANGLE_DUPEBLOCK_FIRST:  out_len = mangle_dupeblock_first  (p0, p1, (PRIVATE_AS u8 *) buf, out_len); break;
