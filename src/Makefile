@@ -459,7 +459,7 @@ ifneq (,$(findstring Android,$(shell uname -a)))
   LFLAGS_NATIVE           += -lm
   LFLAGS_NATIVE           += -liconv
   LFLAGS_NATIVE           += -L$(PREFIX)/lib
-  $(info Android environment detected - enabling Termux compatibility)
+  $(info Android environment detected.)
 else ifeq ($(UNAME),Linux)
   CFLAGS_NATIVE           := $(CFLAGS)
   CFLAGS_NATIVE           += -DWITH_HWMON
