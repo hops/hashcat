@@ -1,8 +1,8 @@
-# Hashcat – Android Build Documentation
+# Hashcat - Android Build Documentation
 
 Revision: 1.1
 
-Author:See `docs/credits.txt`
+Author: See `docs/credits.txt`
 
 ---
 
