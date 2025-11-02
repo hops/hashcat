@@ -157,19 +157,15 @@ Recommended for Mobile
 
 ---
 
-📊 Tested Performance (POCO X6 Pro)
+## 🚀 Performance Results (POCO X6 Pro)
 
-Algorithm Speed Status
-
-MD4 1179 MH/s ✅
-
-MD5 824 MH/s ✅
-
-SHA1 282 MH/s ✅
-
-SHA256 111 MH/s ✅
-
-WPA2 OOM ❌
+| Algorithm | Speed     | Status |
+|-----------|-----------|--------|
+| MD4       | 1179 MH/s | ✅     |
+| MD5       | 824 MH/s  | ✅     |
+| SHA1      | 282 MH/s  | ✅     |
+| SHA256    | 111 MH/s  | ✅     |
+| WPA2      | OOM       | ❌     |
 
 Real-world: 9-character password cracked in 90 seconds at 694 MH/s
 
