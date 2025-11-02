@@ -37,6 +37,14 @@ If clinfo shows 0 platforms, you need to fix OpenCL libraries.
 
 Step 3: Fix OpenCL Libraries (If Needed)
 
+Auto-Fix (Try This First):
+
+```bash
+lib_path=$(find /system /vendor -name "android.hardware.graphics.common-V*-ndk.so" 2>/dev/null | head -1) && if [ -n "$lib_path" ]; then mkdir -p $PREFIX/opt/vendor/lib && ln -sf "$lib_path" "$PREFIX/opt/vendor/lib/android.hardware.graphics.common-V4-ndk.so" && echo "✅ OpenCL linked: $lib_path"; else echo "❌ Auto-fix failed - try manual linking"; fi
+```
+
+Manual Solution (If Auto-Fix Failed):
+
 Find the missing graphics library:
 
 ```bash
@@ -55,11 +63,10 @@ Example:
 ```bash
 ln -s /system/lib64/android.hardware.graphics.common-V5-ndk.so $PREFIX/opt/vendor/lib/android.hardware.graphics.common-V4-ndk.so
 ```
-
 Step 4: Clone and Build Hashcat
 
 ```bash
-git clone https://github.com/hashcat/hashcat.git
+git clone --depth 1 https://github.com/hashcat/hashcat.git
 cd hashcat
 make clean; make
 ```
@@ -162,7 +169,7 @@ Recommended for Mobile
 | Algorithm | Speed     | Status |
 |-----------|-----------|--------|
 | MD4       | 1179 MH/s | ✅     |
-| MD5       | 824 MH/s  | ✅     |
+| MD5       | 853 MH/s  | ✅     |
 | SHA1      | 282 MH/s  | ✅     |
 | SHA256    | 111 MH/s  | ✅     |
 | WPA2      | OOM       | ❌     |
