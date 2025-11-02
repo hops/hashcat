@@ -123,16 +123,14 @@ See: [BUILD_Docker.md](BUILD_Docker.md)
 
 ## 🪟 Building Hashcat for Windows
 
-| Method                                 | Documentation                        |
-|----------------------------------------|--------------------------------------|
-| Android                           | [BUILD_Android.md](BUILD_Android.md)     |
-| From macOS                             | [BUILD_macOS.md](BUILD_macOS.md)     |
-| Using Windows Subsystem for Linux (WSL)| [BUILD_WSL.md](BUILD_WSL.md)         |
-| Using Cygwin                           | [BUILD_CYGWIN.md](BUILD_CYGWIN.md)   |
-| Using MSYS2                            | [BUILD_MSYS2.md](BUILD_MSYS2.md)     |
-| From Linux                             | Run: `make win`                      |
-
----
+| Method                              | Documentation                      |
+|-------------------------------------|------------------------------------|
+| Android                             | [BUILD_Android.md](BUILD_Android.md)   |
+| From macOS                          | [BUILD_macOS.md](BUILD_macOS.md)   |
+| Using Windows Subsystem for Linux (WSL) | [BUILD_WSL.md](BUILD_WSL.md)     |
+| Using Cygwin                        | [BUILD_CYGWIN.md](BUILD_CYGWIN.md) |
+| Using MSYS2                         | [BUILD_MSYS2.md](BUILD_MSYS2.md)   |
+| From Linux                          | Run: `make win`                    |
 
 ## 🎉 Done
 
