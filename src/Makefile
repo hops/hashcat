@@ -448,7 +448,7 @@ endif
 ## Native compilation target
 ##
 
-# Android/Termux detection
+# Android detection
 ifneq (,$(findstring Android,$(shell uname -a)))
   CFLAGS_NATIVE           := $(CFLAGS)
   CFLAGS_NATIVE           += -D__ANDROID__
@@ -456,9 +456,10 @@ ifneq (,$(findstring Android,$(shell uname -a)))
   LFLAGS_NATIVE           += -lpthread
   LFLAGS_NATIVE           += -ldl
   LFLAGS_NATIVE           += -lrt
-  LFLAGS_NATIVE           += -L$(PREFIX)/lib -liconv -lm
+  LFLAGS_NATIVE           += -lm
+  LFLAGS_NATIVE           += -liconv
+  LFLAGS_NATIVE           += -L$(PREFIX)/lib
   $(info Android environment detected - enabling Termux compatibility)
-
 else ifeq ($(UNAME),Linux)
   CFLAGS_NATIVE           := $(CFLAGS)
   CFLAGS_NATIVE           += -DWITH_HWMON
@@ -468,7 +469,6 @@ else ifeq ($(UNAME),Linux)
   LFLAGS_NATIVE           += -lrt
   LFLAGS_NATIVE           += -lm
 endif # Linux
-
 
 ifneq (,$(filter $(UNAME),FreeBSD DragonFly))
 ifndef PORTNAME
