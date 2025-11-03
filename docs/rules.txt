@@ -35,7 +35,7 @@
 #define RULE_OP_MANGLE_CHR_SHIFTR        'R'  // bitwise shift right char at pos N. ex: hello` -> hello0
 #define RULE_OP_MANGLE_CHR_INCR          '+'  // bytewise increase at pos N. ex: hello0 -> hello1
 #define RULE_OP_MANGLE_CHR_DECR          '-'  // bytewise decreate at pos N. ex: hello1 -> hello0
-#define RULE_OP_MANGLE_CHR_ADD           'A'  // add byte value of X at pos N, bytewise. ex: hello0 -> hello`
+#define RULE_OP_MANGLE_CHR_ADD           'B'  // add byte value of X at pos N, bytewise. ex: hello0 -> hello`
 #define RULE_OP_MANGLE_REPLACE_NP1       '.'  // replaces char @ n with value at @ n plus 1
 #define RULE_OP_MANGLE_REPLACE_NM1       ','  // replaces char @ n with value at @ n minus 1
 #define RULE_OP_MANGLE_DUPEBLOCK_FIRST   'y'  // duplicates first N chars

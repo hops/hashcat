@@ -62,7 +62,7 @@
 #define RULE_OP_MANGLE_CHR_SHIFTR        'R'
 #define RULE_OP_MANGLE_CHR_INCR          '+'
 #define RULE_OP_MANGLE_CHR_DECR          '-'
-#define RULE_OP_MANGLE_CHR_ADD           'A'
+#define RULE_OP_MANGLE_CHR_ADD           'B'
 #define RULE_OP_MANGLE_REPLACE_NP1       '.'
 #define RULE_OP_MANGLE_REPLACE_NM1       ','
 #define RULE_OP_MANGLE_DUPEBLOCK_FIRST   'y'
