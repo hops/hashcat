@@ -455,24 +455,24 @@ endif
 ##
 
 ifeq ($(UNAME),Android)
-  CFLAGS_NATIVE           := $(CFLAGS)
-  CFLAGS_NATIVE           += -D__ANDROID__
-  LFLAGS_NATIVE           := $(LFLAGS)
-  LFLAGS_NATIVE           += -lpthread
-  LFLAGS_NATIVE           += -ldl
-  LFLAGS_NATIVE           += -lrt
-  LFLAGS_NATIVE           += -lm
-  LFLAGS_NATIVE           += -liconv
-  LFLAGS_NATIVE           += -L$(PREFIX)/lib
-  $(info Android environment detected.)
+CFLAGS_NATIVE           := $(CFLAGS)
+CFLAGS_NATIVE           += -D__ANDROID__
+LFLAGS_NATIVE           := $(LFLAGS)
+LFLAGS_NATIVE           += -lpthread
+LFLAGS_NATIVE           += -ldl
+LFLAGS_NATIVE           += -lrt
+LFLAGS_NATIVE           += -lm
+LFLAGS_NATIVE           += -liconv
+LFLAGS_NATIVE           += -L$(PREFIX)/lib
+$(info Android environment detected.)
 else ifeq ($(UNAME),Linux)
-  CFLAGS_NATIVE           := $(CFLAGS)
-  CFLAGS_NATIVE           += -DWITH_HWMON
-  LFLAGS_NATIVE           := $(LFLAGS)
-  LFLAGS_NATIVE           += -lpthread
-  LFLAGS_NATIVE           += -ldl
-  LFLAGS_NATIVE           += -lrt
-  LFLAGS_NATIVE           += -lm
+CFLAGS_NATIVE           := $(CFLAGS)
+CFLAGS_NATIVE           += -DWITH_HWMON
+LFLAGS_NATIVE           := $(LFLAGS)
+LFLAGS_NATIVE           += -lpthread
+LFLAGS_NATIVE           += -ldl
+LFLAGS_NATIVE           += -lrt
+LFLAGS_NATIVE           += -lm
 endif # Linux
 
 ifneq (,$(filter $(UNAME),FreeBSD DragonFly))
