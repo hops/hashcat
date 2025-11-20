@@ -10,7 +10,7 @@ Author: See `docs/credits.txt`
 
 · Android 8.0 or higher (OpenCL 3.0 support)
 
-· Termux app installed from F-Droid or Google Play
+· Termux app installed from F-Droid or [GitHub](https://github.com/termux/termux-app/releases/latest)
 
 · ARM64 device with OpenCL-capable GPU
 
@@ -29,7 +29,7 @@ apt install libbz2 liblzma libsqlite openssl readline ncurses
 Step 2: Verify OpenCL Support
 
 ```bash
-apt install clinfo
+apt install -y clinfo
 clinfo
 ```
 
